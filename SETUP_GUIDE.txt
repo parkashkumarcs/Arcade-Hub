@@ -1,0 +1,145 @@
+================================================================================
+                    GAMING HUB - SETUP AND INSTALLATION GUIDE
+                        First Semester C++ Project
+================================================================================
+
+This guide will help you set up and run the Gaming Hub arcade game.
+
+================================================================================
+                            STEP 1: DOWNLOAD RAYLIB
+================================================================================
+
+1. Go to: https://www.raylib.com/
+2. Click "Download" 
+3. Download "raylib-5.0_win64_mingw-w64.zip" (for Windows 64-bit with MinGW)
+   OR download the appropriate version for your system
+
+4. Extract the ZIP file to a folder like: C:\raylib
+
+================================================================================
+                        STEP 2: SETUP FOLDER STRUCTURE
+================================================================================
+
+After extraction, you should have:
+   C:\raylib\
+      ├── include\      (contains raylib.h)
+      ├── lib\          (contains libraylib.a)
+      └── ...
+
+================================================================================
+                            STEP 3: COMPILE THE GAME
+================================================================================
+
+Open Command Prompt (cmd) or PowerShell and navigate to your project folder.
+
+OPTION A - Using MinGW g++ (Recommended):
+-----------------------------------------
+g++ -o GamingHub.exe GamingHub.cpp -I C:\raylib\include -L C:\raylib\lib -lraylib -lopengl32 -lgdi32 -lwinmm
+
+OPTION B - If raylib is in the same folder as your project:
+-----------------------------------------------------------
+g++ -o GamingHub.exe GamingHub.cpp -I ./include -L ./lib -lraylib -lopengl32 -lgdi32 -lwinmm
+
+OPTION C - Using the batch file (create compile.bat):
+-----------------------------------------------------
+Create a file named "compile.bat" with:
+   @echo off
+   g++ -o GamingHub.exe GamingHub.cpp -I C:\raylib\include -L C:\raylib\lib -lraylib -lopengl32 -lgdi32 -lwinmm
+   if %errorlevel%==0 (
+       echo Compilation successful!
+       GamingHub.exe
+   ) else (
+       echo Compilation failed!
+   )
+   pause
+
+Then double-click compile.bat to compile and run.
+
+================================================================================
+                            STEP 4: RUN THE GAME
+================================================================================
+
+After successful compilation, run:
+   GamingHub.exe
+
+================================================================================
+                            GAMES INCLUDED
+================================================================================
+
+1. TIC-TAC-TOE
+   - 2-Player strategy game
+   - Click cells to place X or O
+   - First to get 3 in a row wins!
+
+2. SPACE SURVIVOR
+   - Dodge falling asteroids
+   - Use A/D or Arrow Keys to move
+   - Score increases as you survive
+
+3. BREAK THE CODE
+   - Mastermind-style puzzle
+   - Guess the 4-digit secret code
+   - Each digit is unique (0-9)
+   - 10 attempts maximum
+
+4. ESCAPE ZOMBIE LAND
+   - Navigate grid to reach Safe Zone
+   - Avoid the zombie!
+   - Use WASD or Arrow Keys
+
+5. SWAP CARDS
+   - Memory matching game
+   - Find all 8 pairs
+   - Click cards to flip
+
+================================================================================
+                            CONTROLS
+================================================================================
+
+MENU:           Click buttons to select game
+ALL GAMES:      Press M or ESC to return to menu
+TIC-TAC-TOE:    Click cells, SPACE to restart
+SPACE SURVIVOR: A/D or Arrow Keys, SPACE to restart
+BREAK THE CODE: Type digits, ENTER to submit, SPACE to restart
+ZOMBIE LAND:    WASD or Arrow Keys, SPACE to restart
+SWAP CARDS:     Click cards, SPACE to restart
+
+================================================================================
+                        TROUBLESHOOTING
+================================================================================
+
+ERROR: "raylib.h not found"
+   -> Make sure -I path points to the folder containing raylib.h
+
+ERROR: "cannot find -lraylib"
+   -> Make sure -L path points to the folder containing libraylib.a
+
+ERROR: "undefined reference to..."
+   -> Add these libraries: -lopengl32 -lgdi32 -lwinmm
+
+================================================================================
+                        PROJECT INFORMATION
+================================================================================
+
+Language:       C++
+Library:        raylib (www.raylib.com)
+Window Size:    1000 x 700 pixels
+Target FPS:     60
+
+Files created by the game:
+   - codebreaker_leaderboard.txt (Break The Code scores)
+   - zombie_escape_results.txt (Zombie Land results)
+   - swapcards_best_score.txt (Swap Cards scores)
+
+================================================================================
+                              CREDITS
+================================================================================
+
+Gaming Hub - Professional C++ Arcade
+First Semester C++ Project
+
+Built with raylib - A simple and easy-to-use library to enjoy videogames
+programming. www.raylib.com
+
+================================================================================
+
