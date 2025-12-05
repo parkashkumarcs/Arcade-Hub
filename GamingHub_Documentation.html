@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Hub - Project Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .cover { text-align: center; padding: 60px 0; border-bottom: 3px solid #4a90d9; margin-bottom: 40px; }
+        .cover h1 { font-size: 48px; color: #2c3e50; margin-bottom: 10px; }
+        .cover .subtitle { font-size: 24px; color: #4a90d9; margin-bottom: 20px; }
+        .cover .meta { color: #666; font-size: 16px; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #4a90d9; padding-bottom: 10px; margin: 30px 0 20px; }
+        h3 { color: #4a90d9; margin: 20px 0 10px; }
+        p { margin-bottom: 15px; text-align: justify; }
+        ul, ol { margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        .code-block { background: #f4f4f4; border-left: 4px solid #4a90d9; padding: 15px; margin: 15px 0; font-family: 'Consolas', monospace; font-size: 14px; overflow-x: auto; }
+        .game-card { background: #f8f9fa; border-radius: 8px; padding: 20px; margin: 15px 0; border-left: 4px solid #4a90d9; }
+        .game-card h4 { color: #2c3e50; margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #4a90d9; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .highlight { background: #fff3cd; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .page-break { page-break-after: always; }
+        @media print { body { padding: 20px; } .cover { padding: 40px 0; } }
+    </style>
+</head>
+<body>
+
+<div class="cover">
+    <h1>🎮 GAMING HUB</h1>
+    <div class="subtitle">Professional C++ Arcade Game</div>
+    <div class="meta">
+        <p><strong>Course:</strong> First Semester C++ Programming</p>
+        <p><strong>Technology:</strong> C++ with raylib Graphics Library</p>
+        <p><strong>Date:</strong> December 2025</p>
+    </div>
+</div>
+
+<h2>1. Project Overview</h2>
+<p><strong>Gaming Hub</strong> is a professional graphical arcade application developed in C++ using the raylib graphics library. It features 5 interactive mini-games with a modern user interface, animations, and mouse/keyboard controls.</p>
+
+<h3>Key Features</h3>
+<ul>
+    <li><strong>Professional GUI:</strong> Beautiful graphics with animated backgrounds</li>
+    <li><strong>5 Complete Games:</strong> Various game genres included</li>
+    <li><strong>Object-Oriented Design:</strong> Each game is a separate class</li>
+    <li><strong>Score Tracking:</strong> Scores saved to text files</li>
+    <li><strong>Responsive Controls:</strong> Mouse and keyboard support</li>
+    <li><strong>60 FPS Gameplay:</strong> Smooth animations</li>
+</ul>
+
+<h2>2. Games Included</h2>
+
+<div class="game-card">
+    <h4>🎯 Game 1: Tic-Tac-Toe</h4>
+    <p><strong>Type:</strong> 2-Player Strategy Game</p>
+    <p><strong>Objective:</strong> Get three X's or O's in a row, column, or diagonal.</p>
+    <p><strong>Controls:</strong> Click on cells to place your symbol.</p>
+</div>
+
+<div class="game-card">
+    <h4>🚀 Game 2: Space Survivor</h4>
+    <p><strong>Type:</strong> Real-time Dodge Game</p>
+    <p><strong>Objective:</strong> Survive as long as possible by avoiding falling asteroids.</p>
+    <p><strong>Controls:</strong> A/D or Arrow Keys to move left/right.</p>
+</div>
+
+<div class="game-card">
+    <h4>🔢 Game 3: Break The Code</h4>
+    <p><strong>Type:</strong> Mastermind Puzzle</p>
+    <p><strong>Objective:</strong> Guess the 4-digit secret code within 10 attempts.</p>
+    <p><strong>Controls:</strong> Type digits 0-9, press Enter to submit guess.</p>
+</div>
+
+<div class="game-card">
+    <h4>🧟 Game 4: Escape Zombie Land</h4>
+    <p><strong>Type:</strong> Turn-based Survival</p>
+    <p><strong>Objective:</strong> Navigate the grid to reach the Safe Zone while avoiding the zombie.</p>
+    <p><strong>Controls:</strong> WASD or Arrow Keys to move.</p>
+</div>
+
+<div class="game-card">
+    <h4>🃏 Game 5: Swap Cards</h4>
+    <p><strong>Type:</strong> Memory Match Game</p>
+    <p><strong>Objective:</strong> Find all 8 matching pairs of cards.</p>
+    <p><strong>Controls:</strong> Click cards to flip and match them.</p>
+</div>
+
+<div class="page-break"></div>
+
+<h2>3. Code Structure</h2>
+<p>The project follows Object-Oriented Programming principles with the following structure:</p>
+
+<div class="code-block">
+GamingHub.cpp (Main Source File - ~1000 lines)
+├── Headers & Includes
+├── Constants (Screen size, colors)
+├── Namespace Colors (Color palette)
+├── Utility Functions
+│   ├── DrawTextCentered()
+│   ├── DrawButton()
+│   └── DrawAnimatedBackground()
+├── Game Classes
+│   ├── TicTacToeGame
+│   ├── SpaceSurvivorGame
+│   ├── BreakTheCodeGame
+│   ├── ZombieLandGame
+│   └── SwapCardsGame
+└── main() - Game Loop
+</div>
+
+<h3>Class Structure (Each Game)</h3>
+<div class="code-block">
+class GameName {
+private:
+    // Game state variables
+public:
+    void Init();    // Initialize/reset game
+    bool Update();  // Handle input, update logic
+    void Draw();    // Render graphics
+};
+</div>
+
+<h2>4. Technologies Used</h2>
+<table>
+    <tr><th>Technology</th><th>Purpose</th></tr>
+    <tr><td>C++</td><td>Core programming language</td></tr>
+    <tr><td>raylib</td><td>Graphics library for rendering</td></tr>
+    <tr><td>OpenGL</td><td>Graphics rendering (via raylib)</td></tr>
+    <tr><td>MinGW g++</td><td>Compiler</td></tr>
+</table>
+
+<h2>5. Key C++ Concepts Demonstrated</h2>
+<ul>
+    <li><strong>Classes & Objects:</strong> Each game is encapsulated in its own class</li>
+    <li><strong>Namespaces:</strong> Colors namespace for organized constants</li>
+    <li><strong>Vectors:</strong> Dynamic arrays for asteroids, stars, particles</li>
+    <li><strong>File I/O:</strong> Saving scores using fstream</li>
+    <li><strong>Control Structures:</strong> Loops, conditionals, switch statements</li>
+    <li><strong>Functions:</strong> Modular code with reusable functions</li>
+    <li><strong>Enums:</strong> GameState enum for menu navigation</li>
+    <li><strong>Random Numbers:</strong> Game randomization using rand()</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>6. Setup & Installation Guide</h2>
+
+<h3>Step 1: Install MinGW Compiler</h3>
+<ol>
+    <li>Download MinGW from: <strong>https://winlibs.com/</strong></li>
+    <li>Extract to <code>C:\mingw64</code></li>
+    <li>Add <code>C:\mingw64\bin</code> to System PATH</li>
+    <li>Verify: Open CMD and type <code>g++ --version</code></li>
+</ol>
+
+<h3>Step 2: Install raylib Library</h3>
+<ol>
+    <li>Download from: <strong>https://www.raylib.com/</strong></li>
+    <li>Choose: <code>raylib-5.0_win64_mingw-w64.zip</code></li>
+    <li>Extract to project folder or <code>C:\raylib</code></li>
+</ol>
+
+<h3>Step 3: Compile the Game</h3>
+<div class="code-block">
+g++ -o GamingHub.exe GamingHub.cpp -I "raylib-5.0_win64_mingw-w64/include" -L "raylib-5.0_win64_mingw-w64/lib" -lraylib -lopengl32 -lgdi32 -lwinmm -mwindows
+</div>
+
+<h3>Step 4: Run the Game</h3>
+<div class="code-block">
+GamingHub.exe
+</div>
+
+<div class="highlight">
+<strong>💡 Quick Method:</strong> Double-click <code>compile.bat</code> to automatically compile and run the game!
+</div>
+
+<h2>7. Controls Reference</h2>
+<table>
+    <tr><th>Game/Screen</th><th>Controls</th></tr>
+    <tr><td>Main Menu</td><td>Click buttons to select game</td></tr>
+    <tr><td>All Games</td><td>Press M or ESC to return to menu</td></tr>
+    <tr><td>All Games</td><td>Press SPACE to restart</td></tr>
+    <tr><td>Tic-Tac-Toe</td><td>Click cells to place X/O</td></tr>
+    <tr><td>Space Survivor</td><td>A/D or ←/→ to move</td></tr>
+    <tr><td>Break The Code</td><td>Type digits, ENTER to submit</td></tr>
+    <tr><td>Zombie Land</td><td>WASD or Arrow Keys</td></tr>
+    <tr><td>Swap Cards</td><td>Click cards to flip</td></tr>
+</table>
+
+<h2>8. Files Generated</h2>
+<table>
+    <tr><th>File</th><th>Description</th></tr>
+    <tr><td>GamingHub.cpp</td><td>Main source code</td></tr>
+    <tr><td>GamingHub.exe</td><td>Compiled executable</td></tr>
+    <tr><td>compile.bat</td><td>Compilation script</td></tr>
+    <tr><td>codebreaker_leaderboard.txt</td><td>Break The Code scores</td></tr>
+    <tr><td>zombie_escape_results.txt</td><td>Zombie Land results</td></tr>
+    <tr><td>swapcards_best_score.txt</td><td>Swap Cards best scores</td></tr>
+</table>
+
+<h2>9. Code Explanation (Key Sections)</h2>
+
+<h3>Main Game Loop</h3>
+<div class="code-block">
+while (!WindowShouldClose()) {
+    // Update game logic based on current state
+    switch (currentState) {
+        case MENU: /* handle menu */ break;
+        case TICTACTOE: if (ticTacToe.Update()) currentState = MENU; break;
+        // ... other games
+    }
+
+    BeginDrawing();
+    // Draw based on current state
+    switch (currentState) {
+        case MENU: DrawMenu(); break;
+        case TICTACTOE: ticTacToe.Draw(); break;
+        // ... other games
+    }
+    EndDrawing();
+}
+</div>
+
+<h3>Color Palette (Namespace)</h3>
+<div class="code-block">
+namespace Colors {
+    const Color BACKGROUND = {15, 15, 35, 255};    // Dark blue
+    const Color PRIMARY = {100, 149, 237, 255};    // Cornflower blue
+    const Color ACCENT = {255, 215, 0, 255};       // Gold
+    const Color SUCCESS = {50, 205, 50, 255};      // Lime green
+    const Color DANGER = {220, 20, 60, 255};       // Crimson red
+}
+</div>
+
+<h3>Game Class Example (TicTacToe)</h3>
+<div class="code-block">
+class TicTacToeGame {
+private:
+    int board[9];           // 0=empty, 1=X, 2=O
+    int currentPlayer;      // 1 or 2
+    int winner;             // 0=none, 1=X wins, 2=O wins, 3=draw
+
+public:
+    void Init() { /* reset game state */ }
+    bool Update() { /* handle input, check win */ }
+    void Draw() { /* render grid and symbols */ }
+};
+</div>
+
+<div class="page-break"></div>
+
+<h2>10. Screenshots</h2>
+<p><em>The game features a modern UI with:</em></p>
+<ul>
+    <li>Animated particle background</li>
+    <li>Hover effects on buttons</li>
+    <li>Color-coded game elements</li>
+    <li>Professional typography</li>
+    <li>Smooth 60 FPS animations</li>
+</ul>
+
+<h2>11. Conclusion</h2>
+<p>Gaming Hub demonstrates practical application of C++ programming concepts including object-oriented design, graphics programming, file handling, and game development fundamentals. The project showcases how C++ can be used to create professional, interactive applications beyond simple console programs.</p>
+
+<div class="highlight">
+<strong>About raylib:</strong> raylib is a simple and easy-to-use library for learning videogames programming. It's designed for prototyping and tools development, with a focus on simplicity and ease of use. Website: <strong>www.raylib.com</strong>
+</div>
+
+<hr style="margin: 40px 0;">
+<p style="text-align: center; color: #666;">
+    <strong>Gaming Hub - Professional C++ Arcade</strong><br>
+    First Semester C++ Programming Project<br>
+    Built with C++ and raylib Graphics Library
+</p>
+
+</body>
+</html>
+
